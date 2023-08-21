@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package currency;
+
+option go_package = "./protos";
+
+service currency{
+    rpc GetRate(RateRequest) returns (RateResponse);
+}
+
+message RateRequest{
+    string Base=1;
+    string Destination=2;
+}
+message RateResponse{
+    float Rate=1;
+}
+
+// protoc -I protos/ --go_out=protos/ --go-grpc_out=protos/ protos/currency.proto -(cli)
+
+
+
